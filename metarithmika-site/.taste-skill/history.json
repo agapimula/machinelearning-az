@@ -1,0 +1,38 @@
+{
+ "palettes": [],
+ "types": [],
+ "dealt": [
+  "geist",
+  "source-serif",
+  "outfit"
+ ],
+ "moments": [
+  {
+   "id": "word-highlight",
+   "at": "2026-11-20T11:49:22.973Z",
+   "seed": "155b1b9f"
+  }
+ ],
+ "photos": [
+  {
+   "trade": "office",
+   "draft": true,
+   "lead": null,
+   "ids": [
+    "d183",
+    "c877",
+    "c823"
+   ],
+   "sections": [
+    "hero",
+    "desk",
+    "desk",
+    "papers",
+    "papers",
+    "books"
+   ],
+   "seed": "xhwep0",
+   "at": "2026-11-20T11:50:03.757Z"
+  }
+ ]
+}

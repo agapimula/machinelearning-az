@@ -1,0 +1,11 @@
+{
+ "page": "index.html",
+ "url": null,
+ "root": null,
+ "kind": "service",
+ "category": "bookkeeping and virtual accounting department",
+ "primary": "Book a free clarity call",
+ "rounds": 3,
+ "start": "2026-11-20T12:38:21.552Z",
+ "by": "gate.mjs --start"
+}

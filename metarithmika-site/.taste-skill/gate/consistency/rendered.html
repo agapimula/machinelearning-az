@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en" data-type="service" data-radius="soft" data-buttons="solid" data-motion="" class="m-enter mo-js m-enter-done mo-safe" data-mode="light" style="--g-kl: 1.000; --g-k: 1.000; --g-kp: 0.098; --g-kd: 1.000;" data-tone="light" data-moments-ready="1" data-ready="1"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Metarithmika: bookkeeping and payroll for Ottawa businesses</title>
+<meta name="description" content="A virtual accounting team in Ottawa for small businesses and non-profits across Ontario. Monthly plans start at $250, with a free 20-minute call to begin.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Metarithmika: bookkeeping and payroll for Ottawa businesses">
+<meta property="og:description" content="A virtual accounting team in Ottawa. Monthly plans start at $250.">
+<meta property="og:image" content="share.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="img/favicon-48.png" type="image/png">
+<meta name="theme-color" content="#f7f6f2">
+<link rel="alternate" hreflang="es" href="https://www.metarithmika.ca/es">
+<!-- <link rel="canonical" href="https://www.metarithmika.ca/"> once this page replaces the live one -->
+<meta name="site-kind" content="other">
+<meta name="page-type" content="service">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400..700&amp;family=Libre+Franklin:wght@400..600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/system.css">
+<link rel="stylesheet" href="assets/ui/cards.css">
+<link rel="stylesheet" href="assets/motion/motion.css">
+<link rel="stylesheet" href="assets/backgrounds/backgrounds.css">
+<link rel="stylesheet" href="assets/layout/layout.css">
+<link rel="stylesheet" href="assets/icons/icon.css">
+<style>
+:root {
+  --p-bg: #f7f6f2; --p-surface: #eeece6; --p-ink: #111a22; --p-muted: #5f656a;
+  --p-accent: #d9b86f; --p-accent-ink: #111111; --p-action: #111a22; --p-action-ink: #f7f6f2;
+  --p-inv-bg: #111a22; --p-inv-surface: #1e272e; --p-inv-ink: #f7f6f2; --p-inv-muted: #969a9c;
+  --p-inv-accent: #d9b86f; --p-inv-accent-ink: #111111; --p-inv-action: #d9b86f; --p-inv-action-ink: #111111;
+  --font-display: "Source Serif 4", Georgia, serif;
+  --font-text: "Libre Franklin", system-ui, sans-serif;
+  --display-weight: 400;
+  --display-tracking: -0.02em;
+  --display-tracking-xl: -0.026em;
+}
+</style>
+<script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
+<script src="assets/backgrounds/backgrounds.js"></script>
+<script>document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)</script>
+<link rel="modulepreload" href="assets/moments/moments.js">
+<link rel="modulepreload" href="assets/moments/lib.js">
+<link rel="modulepreload" href="assets/moments/word-highlight/moment.js">
+<!-- page CSS: the client's round logo beside the name, and one --p-h per card group -->
+<style>
+  .nav__logo img.logo-disc { height: 36px; width: 36px; border-radius: 50%; }
+  .footer .nav__logo img.logo-disc { height: 44px; width: 44px; }
+  #start .panel { --p-h: 300px; }
+  #questions .panel { --p-h: 260px; }
+  #book .panel { --p-h: 300px; }
+  @media (max-width: 639px) { #start .panel { --p-h: 200px; } }
+  /* screens per width (layout-v4.md section 2): a section stacked past one screen takes two there */
+  @media (min-width: 1024px) and (max-width: 1279px) { #services, #start { --h: 2; } }
+  @media (min-width: 640px) and (max-width: 1023px) { #services, #start, #pricing { --h: 2; } #book .panel { --p-h: 220px; } #services .frame { aspect-ratio: 4 / 5 !important; } }
+  @media (max-width: 639px) { #services, #start, #pricing, #tools, #questions, #book { --hm: 2; } .nav__actions .nav__link { display: none; } }
+  @media (max-width: 359px) { .closing__links .grid { grid-template-columns: minmax(0, 1fr); } .closing__links .grid > * { grid-column: 1 / -1; } .closing .btn--xl { white-space: normal; height: auto; min-height: 48px; padding-block: 12px; text-align: center; } }
+</style>
+<link rel="stylesheet" href="http://127.0.0.1:5200/assets/moments/word-highlight/moment.css"></head>
+<body>
+<!-- type: service (a virtual accounting firm, Ottawa)
+     deal: hero photo, nav nav-split, close close-type, footer footer-columns, rhythm space, buttons solid,
+           mark: the client's own logo in place of the dealt initial; palette: the client's own navy, paper and gold
+           (start.mjs brand); type source-serif (the dealt first, geist, clashes with the logo's serif capitals)
+     moments: word-highlight in #team (the one statement: who does the work and how fast they answer) -->
+
+<header class="nav nav--split" data-m-nav="1">
+  <div class="wrap nav__bar">
+    <a class="skip-link" href="#top">Skip to content</a>
+    <nav class="nav__links" aria-label="Main">
+      <div class="nav__item">
+        <a class="nav__link" href="#services">Services <svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></a><button class="nav__expand" type="button" aria-label="Show Services links" aria-expanded="false"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+        <div class="nav__menu">
+          <div class="wrap grid">
+            <a class="menu-card span-4" href="#services">
+              <div class="panel"><img class="frame__img" src="assets/img/photo-f9523962-1280.jpg" alt="" loading="eager"></div>
+              <span class="t-card">Bookkeeping and payroll</span>
+              <span class="t-small muted">From $250 a month</span>
+            </a>
+            <a class="menu-card span-4" href="#start">
+              <div class="panel"><img class="frame__img" src="assets/img/photo-f960461-1280.jpg" alt="" loading="eager"></div>
+              <span class="t-card">Getting started</span>
+              <span class="t-small muted">Set up in 2 to 4 weeks</span>
+            </a>
+            <a class="menu-card span-4" href="#tools">
+              <div class="panel"><img class="frame__img" src="assets/img/photo-d183.webp" alt="" loading="eager"></div>
+              <span class="t-card">Free deadline tools</span>
+              <span class="t-small muted">CRA dates and year-end tasks</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="nav__item"><a class="nav__link" href="#pricing">Pricing</a></div>
+      <div class="nav__item"><a class="nav__link" href="#questions">Guarantees</a></div>
+      <div class="nav__item"><a class="nav__link" href="#tools">Tools</a></div>
+    </nav>
+    <a class="nav__logo" href="#top"><img class="logo-disc" src="img/logo-512.png" alt="" width="36" height="36">Metarithmika</a>
+    <div class="nav__actions">
+      <a class="nav__link" href="https://www.metarithmika.ca/es" hreflang="es" lang="es">Español</a>
+      <a class="btn btn--primary" href="#book">Book a free clarity call</a>
+    </div>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Menu">
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero hero--photo is-still is-entered" data-enter="" data-calm="top" aria-labelledby="hero-h">
+    <img class="hero__bg" src="assets/img/photo-f89545113-1920.jpg" alt="Parliament Hill in Ottawa seen across the Ottawa River on a clear summer day" style="--ly-pos: 70% 50%; --ly-pos-phone: 72% 50%" fetchpriority="high" data-source="stand-in" data-subject="Ottawa">
+    <div class="wrap"><div class="hero-text">
+      <div class="hero__text">
+        <h1 id="hero-h">Your accounting team in Ottawa</h1>
+        <p class="hero__lead">Bookkeeping, payroll, GST/HST filing and CFO support for small businesses and non-profits across Ontario. Monthly plans start at $250.</p>
+        <div class="btn-row"><a class="btn btn--primary" href="#book">Book a free clarity call<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"></path><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"></path></svg></a><a class="btn btn--secondary" href="#pricing">See plans and prices</a></div>
+      </div>
+    </div></div>
+  </section>
+
+  <section class="section" id="services" aria-labelledby="services-h">
+    <div class="wrap">
+      <div class="grid grid--top">
+        <div class="span-5 stack-6">
+          <div class="section-head">
+            <h2 id="services-h">Five services, one team</h2>
+            <p>Hand us one job or the whole back office. The same people keep your books, pay your staff and plan your cash.</p>
+          </div>
+          <ul class="rows">
+            <li><span class="rows__name">Accounting and bookkeeping</span><p>Monthly reconciliations, GST/HST returns and statements.</p><span class="rows__value">from $250 a month</span></li>
+            <li><span class="rows__name">Payroll</span><p>Pay runs, CRA remittances, T4 slips and ROEs.</p><span class="rows__value">in Premium</span></li>
+            <li><span class="rows__name">Payables, invoices and grants</span><p>Bills paid on schedule, invoices followed up, grant spending matched to budget.</p><span class="rows__value">in Premium</span></li>
+            <li><span class="rows__name">Clean-up and catch-up</span><p>Months or years of books rebuilt and reconciled.</p><span class="rows__value">quoted after a review</span></li>
+            <li><span class="rows__name">Fractional CFO</span><p>13-week and 12-month cash forecasts, budgets and board packs.</p><span class="rows__value">in Custom</span></li>
+          </ul>
+        </div>
+        <div class="frame frame--photo span-6 start-7" style="aspect-ratio: 4 / 3">
+          <img class="frame__img" src="assets/img/client-accountant-hero.webp" alt="An accountant checking figures on a calculator beside a laptop" loading="eager" data-source="client" data-subject="the work" style="object-position: 62% 50%">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section statement mo-wh" id="team" data-moment="word-highlight" aria-label="Our team" data-moment-mounted="1">
+    <div class="wrap">
+      <p class="t-label">Our team</p>
+      <p class="mo-wh__text" aria-label="One virtual team with more than 15 years of experience keeps your books, runs your payroll and files on time, in English, Spanish or Greek. Every message gets an answer within one business day."><span class="mo-w is-on" aria-hidden="true"><span class="mo-i">One</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">virtual</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">team</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">with</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">more</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">than</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">15</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">years</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">of</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">experience</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">keeps</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">your</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">books,</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">runs</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">your</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">payroll</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">and</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">files</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">on</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">time,</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">in</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">English,</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">Spanish</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">or</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">Greek.</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">Every</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">message</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">gets</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">an</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">answer</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">within</span></span> <strong><span class="mo-w is-on" aria-hidden="true"><span class="mo-i">one</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">business</span></span> <span class="mo-w is-on" aria-hidden="true"><span class="mo-i">day</span></span></strong><span class="mo-w is-on" aria-hidden="true"><span class="mo-i">.</span></span></p>
+    </div>
+  </section>
+
+  <section class="section" id="start" aria-labelledby="start-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="start-h">Set up in 3 steps</h2>
+        <p>Most clients are fully set up within 2 to 4 weeks, depending on how current their records are.</p>
+      </div>
+      <div class="grid">
+        <article class="card card--row span-4">
+          <span class="step-num">1</span>
+          <h3>Talk through your books</h3>
+          <p>A free 20-minute call about your bookkeeping, payroll and filings, then a written proposal.</p>
+          <div class="panel"><img class="frame__img" src="assets/img/photo-f960461-1280.jpg" alt="Pens and reading glasses on an office desk" loading="eager" data-source="stand-in" data-subject="the call"></div>
+        </article>
+        <article class="card card--row span-4">
+          <span class="step-num">2</span>
+          <h3>Send your records securely</h3>
+          <p>Upload statements and receipts by encrypted file share. We set up QuickBooks Online or Sage 50.</p>
+          <div class="panel"><img class="frame__img" src="assets/img/photo-c877.webp" alt="A stack of record books and binders" loading="eager" data-source="library-c877" data-subject="records"></div>
+        </article>
+        <article class="card card--row span-4">
+          <span class="step-num">3</span>
+          <h3>Get statements every month</h3>
+          <p>We reconcile each month, send your statements and remind you of every filing deadline.</p>
+          <div class="panel"><img class="frame__img" src="assets/img/photo-f9523962-1280.jpg" alt="Bound ledgers stacked on a shelf" loading="eager" data-source="stand-in" data-subject="statements"></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="pricing" aria-labelledby="pricing-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="pricing-h">Plans and prices</h2>
+        <p>No long-term contracts. Non-profits get 20% off their first 3 months.</p>
+      </div>
+      <div class="grid">
+        <article class="card card--plan span-4">
+          <h3>Standard</h3>
+          <p class="muted">Monthly bookkeeping for a small business</p>
+          <p class="price"><span class="t-stat">$250</span><span class="muted">a month, from</span></p>
+          <ul class="checks">
+            <li>An assigned bookkeeper</li>
+            <li>Up to 20 transactions a month</li>
+            <li>Monthly reconciliation and sales tax filing</li>
+            <li>Quarterly financial statements</li>
+          </ul>
+          <a class="btn btn--secondary" href="#book">Ask about Standard</a>
+        </article>
+        <article class="card card--plan span-4 is-featured">
+          <h3>Premium</h3>
+          <p class="muted">An accounting and admin team, payroll included</p>
+          <p class="price"><span class="t-stat">$750</span><span class="muted">a month, from</span></p>
+          <ul class="checks">
+            <li>An accounting team and weekly meetings</li>
+            <li>Monthly statements and sales tax filing</li>
+            <li>Payables and receivables handled</li>
+            <li>Payroll for 2 employees</li>
+          </ul>
+          <a class="btn btn--secondary" href="#book">Ask about Premium</a>
+        </article>
+        <article class="card card--plan span-4">
+          <h3>Custom</h3>
+          <p class="muted">Priced on your volume and scope</p>
+          <p class="price"><span class="t-stat">Quote</span><span class="muted">after your call</span></p>
+          <ul class="checks">
+            <li>Your transaction and staff volume</li>
+            <li>Reporting and filing on your schedule</li>
+            <li>CFO budgets and cash forecasts</li>
+          </ul>
+          <a class="btn btn--secondary" href="#book">Request a custom quote</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="tools" aria-labelledby="tools-h">
+    <div class="wrap">
+      <div class="grid grid--top">
+        <div class="span-5 stack-6">
+          <div class="section-head">
+            <h2 id="tools-h">Free tools for Ontario deadlines</h2>
+            <p>Two tools we built for our clients, open to anyone. No sign-up needed.</p>
+          </div>
+          <ul class="rows">
+            <li><span class="rows__name">Deadline tracker</span><p>GST/HST, payroll remittance and filing dates for your business, in one list.</p><a class="link" href="https://deadline-tracker.metarithmika.ca">Open the deadline tracker</a></li>
+            <li><span class="rows__name">Year-end checklist</span><p>What to gather before your accountant closes the year.</p><a class="link" href="https://year-end-checklist.metarithmika.ca">Open the year-end checklist</a></li>
+          </ul>
+        </div>
+        <div class="frame frame--photo span-6 start-7" style="aspect-ratio: 4 / 3">
+          <img class="frame__img" src="assets/img/photo-d183.webp" alt="An open notebook with a pencil across its blank pages" loading="eager" data-source="library-d183" data-subject="planning">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="questions" aria-labelledby="questions-h">
+    <div class="wrap">
+      <div class="grid grid--top">
+        <div class="span-5 stack-4">
+          <h2 id="questions-h">Guarantees and questions</h2>
+          <p>Each guarantee has written conditions in our terms of engagement.</p>
+          <p><a class="link" href="https://www.metarithmika.ca/client-guarantee">Read the client guarantee</a></p>
+          <div class="panel"><img class="frame__img" src="assets/img/photo-f116821926-1280.jpg" alt="The Rideau Canal in Ottawa under a green steel bridge" loading="eager" data-source="stand-in" data-subject="Ottawa"></div>
+        </div>
+        <div class="faq span-6 start-7">
+          <div class="faq__item"><h3>What if you make an error in my books?</h3><p>We correct it at no cost if you report it in the 30 days after the report or filing. Government penalties are not covered.</p></div>
+          <div class="faq__item"><h3>Can I cancel my plan?</h3><p>Yes. Give written notice 10 days before your next billing date. There is no long-term contract.</p></div>
+          <div class="faq__item"><h3>What if I am not happy with the service?</h3><p>Tell us in your first 30 days. If we cannot fix it, cancel and we refund your first month's fee.</p></div>
+          <div class="faq__item"><h3>Which accounting software do you use?</h3><p>QuickBooks Online or Sage 50, with receipt capture, and payroll through Wagepoint or your current provider.</p></div>
+          <div class="faq__item"><h3>Do you keep books for non-profits?</h3><p>Yes: grant tracking against your funder's budget, board-ready reports and T3010-ready records.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="book" aria-labelledby="book-h">
+    <div class="wrap">
+      <div class="grid grid--top">
+        <div class="span-5 stack-6">
+          <div class="section-head">
+            <h2 id="book-h">Free 20-minute clarity call</h2>
+            <p>Tell us about your business and we suggest a plan. No obligation, in English, Spanish or Greek.</p>
+          </div>
+          <div class="panel">
+            <img class="frame__img" src="assets/img/client-contact-desk.webp" alt="A Metarithmika mug beside a laptop, a pen and printed reports" loading="eager" data-source="client" data-subject="the office">
+          </div>
+        </div>
+        <form class="form span-6 start-7" action="mailto:info@metarithmika.ca" method="post" enctype="text/plain" data-endpoint="" novalidate="">
+          <div class="field"><label for="f-name">Your name</label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required="" aria-describedby="f-name-err">
+            <p class="field__error" id="f-name-err" hidden="">Write the name we should ask for.</p></div>
+          <div class="field"><label for="f-email">Email</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required="" aria-describedby="f-email-err">
+            <p class="field__error" id="f-email-err" hidden="">Write an email address with an @, like name@business.ca.</p></div>
+          <div class="field"><label for="f-org">Business or organization</label>
+            <input id="f-org" name="organization" type="text" autocomplete="organization" aria-describedby="f-org-err">
+            <p class="field__error" id="f-org-err" hidden="">Write the name of your business.</p></div>
+          <div class="field"><label for="f-need">What you need help with</label>
+            <textarea id="f-need" name="need" rows="3" required="" aria-describedby="f-need-err"></textarea>
+            <p class="field__error" id="f-need-err" hidden="">Write a line about your books, payroll or filings.</p></div>
+          <div class="btn-row"><button class="btn btn--primary" type="submit">Book a free clarity call</button></div>
+          <p class="form__status" role="status" data-form-status=""></p>
+          <p class="t-small muted">Prefer the phone? Call (613) 706-9580.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer closing" id="contact" aria-labelledby="close-h">
+  <div class="wrap">
+    <div class="closing__cta close--type">
+      <div class="section-head">
+        <h2 id="close-h">Books current every month</h2>
+        <p>Plans from $250 a month. Cancel with 10 days' notice.</p>
+      </div>
+      <a class="btn btn--primary btn--xl btn--wide" href="#book">Book a free clarity call<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"></path><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"></path></svg></a>
+    </div>
+    <div class="closing__links">
+      <div class="grid">
+        <div class="span-4 stack-4">
+          <a class="nav__logo" href="#top"><img class="logo-disc" src="img/logo-512.png" alt="" width="44" height="44">Metarithmika</a>
+          <p class="footer__lede">Your accounting department, in Ottawa</p>
+        </div>
+        <div class="span-2 footer__col"><h3>Services</h3><ul><li><a href="#services">All services</a></li><li><a href="#start">Getting started</a></li></ul></div>
+        <div class="span-2 footer__col"><h3>Pricing</h3><ul><li><a href="#pricing">Plans</a></li><li><a href="https://www.metarithmika.ca/referral-program">Referrals</a></li></ul></div>
+        <div class="span-2 footer__col"><h3>Guarantees</h3><ul><li><a href="#questions">Questions</a></li><li><a href="https://www.metarithmika.ca/client-guarantee">Conditions</a></li></ul></div>
+        <div class="span-2 footer__col"><h3>Contact</h3><ul><li><a href="tel:+16137069580">(613) 706-9580</a></li><li><a href="mailto:info@metarithmika.ca">Email us</a></li><li><address>Carling Avenue, Ottawa</address></li><li><a href="https://www.metarithmika.ca/es" hreflang="es" lang="es">Español</a></li></ul></div>
+      </div>
+      <div class="footer__legal">
+        <span>© 2026 Metarithmika</span>
+        <span><a href="https://www.metarithmika.ca/privacy-policy">Privacy</a> &nbsp; <a href="https://www.metarithmika.ca/terms-and-conditions">Terms</a></span>
+        <a class="credits" href="credits.html">Photographs via Wikimedia Commons</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<nav class="actionbar" aria-label="Quick actions" data-bar="hidden" inert="">
+  <a class="btn btn--primary" href="#book">Book a free clarity call</a>
+</nav>
+
+<script type="module" src="assets/system.js"></script>
+<script type="module" src="assets/motion/motion.js"></script>
+<script type="module" src="assets/layout/layout.js"></script>
+
+
+</body></html>

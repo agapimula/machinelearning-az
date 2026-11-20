@@ -1,0 +1,417 @@
+{
+ "start": "2026-11-20T12:38:21.552Z",
+ "round": 0,
+ "idle": 0,
+ "errors": 0,
+ "status": "pass",
+ "history": [
+  {
+   "at": "2026-11-20T12:40:28.587Z",
+   "mode": "manual",
+   "status": "pass",
+   "fails": 0,
+   "round": 0,
+   "reused": false,
+   "stopHookActive": false
+  }
+ ],
+ "max": 3,
+ "marker": {
+  "page": "index.html",
+  "url": null,
+  "root": null,
+  "kind": "service",
+  "category": "bookkeeping and virtual accounting department",
+  "primary": "Book a free clarity call",
+  "rounds": 3,
+  "start": "2026-11-20T12:38:21.552Z",
+  "by": "gate.mjs --start"
+ },
+ "manual": true,
+ "fp": "7c02e888745b2fc2",
+ "page": "index.html",
+ "found": {
+  "fails": [
+   {
+    "check": "section-gaps",
+    "where": "main#top > section.hero.hero--photo / section#services",
+    "msg": "113px between these sections, -61% against the median 287px",
+    "fix": "use one gap between sections (all within 25% of each other)",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency",
+    "ids": [
+     "section-gaps"
+    ],
+    "wheres": [
+     "main#top > section.hero.hero--photo / section#services"
+    ]
+   },
+   {
+    "check": "phone-number",
+    "where": "div.wrap > div.grid.grid--top > form.form.span-6 > p.t-small.muted \"(613) 706-9580\"",
+    "msg": "a US phone number: \"(613) 706-9580\"; a visitor can dial it and reach a stranger (and 1 more like it: div.grid > div.span-2.footer__col:nth-of-type(5) > ul > li:nth-of-type(1))",
+    "fix": "drop the number and its tel: link (a \"Request a call\" form may stand in), unless the brief gives the number",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "phone-number"
+    ],
+    "wheres": [
+     "div.wrap > div.grid.grid--top > form.form.span-6 > p.t-small.muted \"(613) 706-9580\""
+    ]
+   },
+   {
+    "check": "phone-number",
+    "where": "div.span-2.footer__col:nth-of-type(5) > ul > li:nth-of-type(1) > a \"tel:+16137069580\"",
+    "msg": "a tel: link calls a number in a real dialable format: \"tel:+16137069580\"; a visitor can dial it and reach a stranger",
+    "fix": "drop the number and its tel: link (a \"Request a call\" form may stand in), unless the brief gives the number",
+    "widths": [
+     1440
+    ],
+    "from": "consistency",
+    "ids": [
+     "phone-number"
+    ],
+    "wheres": [
+     "div.span-2.footer__col:nth-of-type(5) > ul > li:nth-of-type(1) > a \"tel:+16137069580\""
+    ]
+   }
+  ],
+  "warns": [
+   {
+    "check": "scroll-reveal",
+    "where": "section#team > div.wrap > p.mo-wh__text \"One virtual team with more than 15 years\"",
+    "msg": "starts \"color\" (0.2 s) the moment it is scrolled into view (an IntersectionObserver) on span.mo-w:nth-of-type(1) (inside a dealt moment's section, [data-moment]: an enter moment is expected on every kind; its still is judged under reduced motion)",
+    "fix": "show it at rest: no fade, rise or unmask when it is scrolled into view",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "no-visual",
+    "where": "section#book \"Free 20-minute clarity call\"",
+    "msg": "pictures, effects and mocks cover 23% of this section; a feature section needs a visual (about 25% or more)",
+    "fix": "give the section a visual: a UI fragment on a ground, real icons, or a photograph that fits",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "text-only",
+    "where": "section#pricing \"Plans and prices\"",
+    "msg": "the section is only text: no picture, icon, mock or effect in it",
+    "fix": "give the section a visual: a photograph that fits, the real icons, or a UI fragment on a ground",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "card-visual",
+    "where": "section#pricing > div.wrap > div.grid \"Standard Monthly bookkeeping for a small\"",
+    "msg": "3 cards hold only text: no picture, icon, UI fragment or effect in any of them",
+    "fix": "give the cards a visual: an inset panel with a UI fragment, a photograph or real icons",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "copy-headings",
+    "where": "div.wrap > div.grid > article.card.card--row:nth-of-type(2) > h3 \"Send your records securely\"",
+    "msg": "the card title \"Send your records securely\" names no product, part, place or section (2 card titles like it) (and 1 more like it: \"Get statements every mon\")",
+    "fix": "name the thing in every heading: the product, a part, the place or a section noun",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "copy-actions",
+    "where": "header.nav.nav--split > div.wrap.nav__bar > div.nav__actions > a.btn.btn--primary \"Book a free clarity call\"",
+    "msg": "4 labels for one target /index.html#book: \"Book a free clarity call\", \"Ask about Standard\", \"Ask about Premium\", \"Request a custom quote\"",
+    "fix": "few actions, one wording: at most 2 in the hero, the main action word for word in nav, hero and close",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "section-gaps",
+    "where": "section#start / section#pricing",
+    "msg": "213px between these sections, -26% against the median 287px",
+    "fix": "use one gap between sections (all within 25% of each other)",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "section-gaps",
+    "where": "section#tools / section#questions",
+    "msg": "422px between these sections, +47% against the median 287px",
+    "fix": "use one gap between sections (all within 25% of each other)",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "section-gaps",
+    "where": "section#book / footer#contact",
+    "msg": "416px between these sections, +45% against the median 287px",
+    "fix": "use one gap between sections (all within 25% of each other)",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "photo-set",
+    "where": "div.grid > article.card.card--row:nth-of-type(3) > div.panel > img.frame__img \"photo-f9523962-1280.jpg\"",
+    "msg": "8 photographs in more than one look: saturation from 0.19 to 0.59; the odd one out is photo-f9523962-1280.jpg",
+    "fix": "grade the photographs to one look (light, colour, warmth), or replace the odd one out",
+    "widths": [
+     1440,
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "photo-credit",
+    "where": "(the page text)",
+    "msg": "1 library source (wikimedia): the page credits wikimedia; confirm each shows the client's own product, place or people",
+    "fix": "confirm the library photograph shows the client's own product, place or people; otherwise replace it",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "nav-labels",
+    "where": "div.nav__item:nth-of-type(1) > div.nav__menu > div.wrap.grid > a.menu-card.span-4:nth-of-type(1) \"Bookkeeping and payroll From $250 a mont\"",
+    "msg": "\"Bookkeeping and payroll From $250 a mont\" opens a section headed \"Five services, one team\"",
+    "fix": "name each nav link after the heading of the section it opens",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "nav-labels",
+    "where": "div.wrap.nav__bar > nav.nav__links > div.nav__item:nth-of-type(2) > a.nav__link \"Pricing\"",
+    "msg": "\"Pricing\" opens a section headed \"Plans and prices\"",
+    "fix": "name each nav link after the heading of the section it opens",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "nav-labels",
+    "where": "header.nav.nav--split > div.wrap.nav__bar > a.nav__logo \"Metarithmika\"",
+    "msg": "\"Metarithmika\" opens a section headed \"Your accounting team in Ottawa\"",
+    "fix": "name each nav link after the heading of the section it opens",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "nav-current",
+    "where": "header.nav.nav--split",
+    "msg": "the nav stays on screen with 4 links to the page's sections, but never marks the one you are in (no link changes as the page scrolls)",
+    "fix": "mark the link of the section on screen (a colour, a weight or a line under it) as the visitor scrolls",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "empty-area",
+    "where": "section#book \"Free 20-minute clarity call\"",
+    "msg": "39% of the section is empty: 208px under its last (div.panel), 10% beside content that covers under half the container, in its 720px of rows (WARN over 35%, FAIL over 50%)",
+    "fix": "fill the section: a picture or a second column beside the words, or more of its own content; the section stays one or two screens tall (T-height)",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "action-repeat",
+    "where": "header.nav.nav--split > div.wrap.nav__bar > div.nav__actions > a.btn.btn--primary:nth-of-type(2) \"book a free clarity call\"",
+    "msg": "\"book a free clarity call\" shows 2 times on the first screen at 1440px (nav, hero): the nav's button and the hero's; nothing else on the screen may repeat it",
+    "fix": "show the action once a screen besides the nav's button: the hero's, the close's or the phone bar's, never all at once",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "section-air",
+    "where": "section#tools \"Free tools for Ontario deadlines Two too\"",
+    "msg": "the content fills 53.1% of the section's height (478 of 900px): 55% or more (40% WARN) (SR-3)",
+    "fix": "fill the section to 55%: more content, a picture or a background layer, or merge it into the section above as its last block",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "section-air",
+    "where": "section#book \"Free 20-minute clarity call Tell us abou\"",
+    "msg": "the content fills 53.7% of the section's height (484 of 900px): 55% or more (40% WARN) (SR-3)",
+    "fix": "fill the section to 55%: more content, a picture or a background layer, or merge it into the section above as its last block",
+    "widths": [
+     1440
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "nav",
+    "where": "header.nav.nav--split > div.wrap.nav__bar > button.nav__toggle",
+    "msg": "the nav is lopsided: its last item ends 13px inside the content's edge (366px), while its first starts on the other edge",
+    "fix": "start the nav's first item and end its last on the content's two edges",
+    "widths": [
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "no-visual",
+    "where": "section#services \"Five services, one team\"",
+    "msg": "pictures, effects and mocks cover 21% of this section; a feature section needs a visual (about 25% or more)",
+    "fix": "give the section a visual: a UI fragment on a ground, real icons, or a photograph that fits",
+    "widths": [
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "cta",
+    "where": "section#services \"Five services, one team\"",
+    "msg": "a section over 1.5 screens long with no link or button in it",
+    "fix": "add the action: a button in the hero, one on every priced item, one in the closing section",
+    "widths": [
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "cta",
+    "where": "section#start \"Set up in 3 steps\"",
+    "msg": "a section over 1.5 screens long with no link or button in it",
+    "fix": "add the action: a button in the hero, one on every priced item, one in the closing section",
+    "widths": [
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "section-gaps",
+    "where": "section#pricing / section#tools",
+    "msg": "244px between these sections, -47% against the median 461px",
+    "fix": "use one gap between sections (all within 25% of each other)",
+    "widths": [
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "section-gaps",
+    "where": "section#questions / section#book",
+    "msg": "596px between these sections, +29% against the median 461px",
+    "fix": "use one gap between sections (all within 25% of each other)",
+    "widths": [
+     390
+    ],
+    "from": "consistency"
+   },
+   {
+    "check": "photo-weight",
+    "where": "main#top > section.hero.hero--photo > img.hero__bg \"photo-f89545113-1920.jpg\"",
+    "msg": "3 photographs are 3x or more wider than drawn on the phone, with no srcset: photo-f89545113-1920.jpg is 1920px (790 KB) for a 390px frame; on a phone it arrives late and its frame shows only its ground until then",
+    "fix": "give each photograph srcset and sizes (a 800px and a 1600px file), or a smaller file: the frame never shows empty",
+    "widths": [
+     390
+    ],
+    "from": "consistency"
+   }
+  ],
+  "crashed": [],
+  "seconds": {
+   "consistency": 123,
+   "layout": 4
+  }
+ },
+ "open": [],
+ "waived": [
+  {
+   "check": "section-gaps",
+   "where": "main#top > section.hero.hero--photo / section#services",
+   "msg": "113px between these sections, -61% against the median 287px",
+   "fix": "use one gap between sections (all within 25% of each other)",
+   "widths": [
+    1440,
+    390
+   ],
+   "from": "consistency",
+   "ids": [
+    "section-gaps"
+   ],
+   "wheres": [
+    "main#top > section.hero.hero--photo / section#services"
+   ],
+   "reason": "the dealt photo hero is a full-bleed photograph down to the screen's foot by design, so its gap to the next section is only that section's top padding"
+  },
+  {
+   "check": "phone-number",
+   "where": "div.wrap > div.grid.grid--top > form.form.span-6 > p.t-small.muted \"(613) 706-9580\"",
+   "msg": "a US phone number: \"(613) 706-9580\"; a visitor can dial it and reach a stranger (and 1 more like it: div.grid > div.span-2.footer__col:nth-of-type(5) > ul > li:nth-of-type(1))",
+   "fix": "drop the number and its tel: link (a \"Request a call\" form may stand in), unless the brief gives the number",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "phone-number"
+   ],
+   "wheres": [
+    "div.wrap > div.grid.grid--top > form.form.span-6 > p.t-small.muted \"(613) 706-9580\""
+   ],
+   "reason": "the client's own published office number from metarithmika.ca; a real firm needs it on the page"
+  },
+  {
+   "check": "phone-number",
+   "where": "div.span-2.footer__col:nth-of-type(5) > ul > li:nth-of-type(1) > a \"tel:+16137069580\"",
+   "msg": "a tel: link calls a number in a real dialable format: \"tel:+16137069580\"; a visitor can dial it and reach a stranger",
+   "fix": "drop the number and its tel: link (a \"Request a call\" form may stand in), unless the brief gives the number",
+   "widths": [
+    1440
+   ],
+   "from": "consistency",
+   "ids": [
+    "phone-number"
+   ],
+   "wheres": [
+    "div.span-2.footer__col:nth-of-type(5) > ul > li:nth-of-type(1) > a \"tel:+16137069580\""
+   ],
+   "reason": "the client's own published office number from metarithmika.ca, as a tap-to-call link in the footer"
+  }
+ ],
+ "warnCount": 26,
+ "at": "2026-11-20T12:40:28.587Z"
+}

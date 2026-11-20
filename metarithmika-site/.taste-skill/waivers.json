@@ -1,0 +1,17 @@
+[
+  {
+    "check": "phone-number",
+    "target": "form.form.span-6 > p.t-small.muted",
+    "reason": "the client's own published office number from metarithmika.ca; a real firm needs it on the page"
+  },
+  {
+    "check": "phone-number",
+    "target": "tel:+16137069580",
+    "reason": "the client's own published office number from metarithmika.ca, as a tap-to-call link in the footer"
+  },
+  {
+    "check": "section-gaps",
+    "target": "section.hero.hero--photo / section#services",
+    "reason": "the dealt photo hero is a full-bleed photograph down to the screen's foot by design, so its gap to the next section is only that section's top padding"
+  }
+]
