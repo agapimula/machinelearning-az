@@ -9,3 +9,4 @@ Update: `npx skills@latest add emilkowalski/skills` or re-copy `skills/*` from t
 
 - `impeccable/` — from https://github.com/pbakaus/impeccable (commit b49177d), Apache-2.0 (see `impeccable/LICENSE`, `impeccable/NOTICE.md`). Skill only; the optional design hook is not installed.
 - `frontend-design/` — from https://github.com/anthropics/skills, Apache-2.0 (see `frontend-design/LICENSE.txt`).
+- `taste-skill/` (skill name `design-taste-frontend`) — from https://github.com/Leonxlnx/taste-skill (commit f6b7657), MIT (see `taste-skill/LICENSE`).
