@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Metarithmika: bookkeeping and payroll in Ottawa (preview)</title>
+<meta name="description" content="Preview of the Metarithmika home page in its navy and gold design, with motion.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#111a22; --ink-soft:#19232c; --ink-card:#202b35; --line:rgba(239,211,151,.16);
+  --gold:#d9b86f; --gold-light:#efd397; --paper:#f7f6f2; --paper-warm:#eeece6;
+  --text:#e9e6de; --muted:#a9b0b6; --text-dark:#111a22; --muted-dark:#4f565c;
+  --ease-out:cubic-bezier(0.23,1,0.32,1); --ease-in-out:cubic-bezier(0.77,0,0.175,1);
+  --wrap:min(100% - 48px, 1200px); --r:16px;
+  --serif:"Playfair Display",Georgia,serif; --sans:Inter,system-ui,sans-serif;
+}
+*{box-sizing:border-box} html,body{margin:0} html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--text);font:16px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{width:var(--wrap);margin-inline:auto}
+h1,h2,h3{margin:0;font-weight:600}
+h1,h2{font-family:var(--serif);letter-spacing:-.01em}
+p{margin:0}
+.label{font:600 12px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.skip{position:absolute;left:-999px}.skip:focus{left:16px;top:16px;z-index:50;background:var(--gold);color:var(--ink);padding:8px 12px;border-radius:8px}
+:focus-visible{outline:2px solid var(--gold-light);outline-offset:3px}
+
+/* buttons: press feedback 160ms; hover colour gated to real pointers */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 24px;border-radius:999px;font:600 15px/1 var(--sans);text-decoration:none;border:1px solid transparent;cursor:pointer;
+  transition:transform 160ms var(--ease-out),background-color 200ms ease,border-color 200ms ease,color 200ms ease}
+.btn:active{transform:scale(.97)}
+.btn--gold{background:var(--gold);color:var(--ink)}
+.btn--line{border-color:rgba(239,211,151,.45);color:var(--gold-light)}
+.btn svg{width:14px;height:14px;transition:transform 200ms var(--ease-out)}
+@media (hover:hover) and (pointer:fine){
+  .btn--gold:hover{background:var(--gold-light)}
+  .btn--line:hover{border-color:var(--gold-light);background:rgba(217,184,111,.08)}
+  .btn:hover svg{transform:translateX(3px)}
+}
+
+/* nav */
+.nav{position:fixed;inset:0 0 auto;z-index:20;height:76px;background:rgba(17,26,34,.92);border-bottom:1px solid var(--line);backdrop-filter:saturate(1.2) blur(8px)}
+.nav .wrap{height:100%;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand img{width:44px;height:44px;border-radius:50%}
+.brand b{display:block;font:600 13px/1.2 var(--sans);letter-spacing:.24em;color:var(--gold-light)}
+.brand small{display:block;font:500 9px/1.4 var(--sans);letter-spacing:.2em;color:var(--muted)}
+.links{display:flex;align-items:center;gap:28px}
+.links a{position:relative;text-decoration:none;font-size:15px;color:var(--text)}
+.links a::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform 220ms var(--ease-out)}
+@media (hover:hover) and (pointer:fine){.links a:hover::after{transform:scaleX(1)}}
+.lang{font-size:13px;color:var(--muted)}.lang b{color:var(--gold-light);font-weight:600}
+.menu-btn{display:none;width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:none;color:var(--gold-light);cursor:pointer}
+.sheet{position:fixed;inset:76px 0 0;z-index:19;background:var(--ink);padding:24px;display:grid;align-content:start;gap:4px;
+  opacity:0;transform:translateY(-8px);pointer-events:none;transition:opacity 200ms var(--ease-out),transform 200ms var(--ease-out)}
+.sheet a{padding:16px 0;border-bottom:1px solid var(--line);text-decoration:none;font:500 20px/1.2 var(--serif)}
+.sheet .btn{margin-top:20px;font-family:var(--sans);font-size:15px}
+.sheet.open{opacity:1;transform:none;pointer-events:auto}
+
+/* hero */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:120px 0 64px;overflow:hidden}
+.hero__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:70% 40%}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(17,26,34,.97) 0%,rgba(17,26,34,.9) 38%,rgba(17,26,34,.35) 70%,rgba(17,26,34,.2) 100%)}
+.hero .wrap{position:relative;z-index:2}
+.hero__copy{max-width:620px;display:grid;gap:24px}
+.hero h1{font-size:clamp(40px,5.4vw,72px);line-height:1.05;color:#fff}
+.hero h1 em{font-style:normal;color:var(--gold-light)}
+.hero__lead{font-size:clamp(17px,1.4vw,19px);color:var(--text);max-width:52ch}
+.hero__cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:56px;padding-top:28px;border-top:1px solid var(--line);max-width:860px}
+.fact b{display:block;font:600 clamp(24px,2.4vw,32px)/1.1 var(--serif);color:var(--gold-light);font-variant-numeric:tabular-nums}
+.fact > span{display:block;margin-top:6px;font-size:14px;color:var(--muted)}
+
+/* hero entrance: once on load, staggered, ease-out; photo settles from a slight zoom */
+@media (prefers-reduced-motion:no-preference){
+  .js .hero__img{transform:scale(1.06);transition:transform 1600ms var(--ease-out)}
+  .js .ready .hero__img{transform:none}
+  .js [data-enter]{opacity:0;transform:translateY(14px);filter:blur(4px);
+    transition:opacity 700ms var(--ease-out),transform 700ms var(--ease-out),filter 700ms var(--ease-out);transition-delay:var(--d,0ms)}
+  .js .ready [data-enter]{opacity:1;transform:none;filter:none}
+}
+
+/* sections */
+section{padding:120px 0}
+.light{background:var(--paper);color:var(--text-dark)}
+.light .label{color:#8a6a23}
+.head{display:grid;gap:14px;max-width:680px;margin-bottom:56px}
+.head h2{font-size:clamp(32px,3.6vw,48px);line-height:1.12}
+.head p{font-size:18px;color:var(--muted)}
+.light .head p{color:var(--muted-dark)}
+
+/* scroll reveal: marketing page only, once, transform+opacity */
+@media (prefers-reduced-motion:no-preference){
+  .js [data-reveal]{opacity:0;transform:translateY(24px);transition:opacity 700ms var(--ease-out),transform 700ms var(--ease-out);transition-delay:var(--d,0ms)}
+  .js [data-reveal].in{opacity:1;transform:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .js [data-reveal],.js [data-enter]{opacity:1}
+}
+
+/* services: 3 x 2, no orphan */
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.card{position:relative;display:grid;gap:12px;align-content:start;padding:32px;border-radius:var(--r);background:var(--ink-card);color:var(--text);text-decoration:none;
+  border:1px solid transparent;transition:transform 220ms var(--ease-out),border-color 220ms ease,box-shadow 220ms ease}
+.card svg{width:30px;height:30px;color:var(--gold);transition:transform 260ms var(--ease-out)}
+.card h3{font-size:19px;color:var(--gold-light)}
+.card p{color:var(--text);font-size:15.5px}
+.card .price{margin-top:6px;font-size:13.5px;color:var(--muted)}
+.card .go{margin-top:10px;font-size:14px;font-weight:600;color:var(--gold-light);display:inline-flex;gap:8px;align-items:center}
+.card .go svg{width:14px;height:14px;color:var(--gold-light);transition:transform 220ms var(--ease-out)}
+@media (hover:hover) and (pointer:fine){
+  .card:hover{transform:translateY(-4px);border-color:rgba(217,184,111,.45);box-shadow:0 18px 40px -18px rgba(0,0,0,.6)}
+  .card:hover > svg{transform:scale(1.08) rotate(-4deg)}
+  .card:hover .go svg{transform:translateX(4px)}
+}
+
+/* team band */
+.band{background:var(--ink-soft);padding:100px 0}
+.band__grid{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center}
+.band blockquote{margin:0;font:500 clamp(26px,2.8vw,38px)/1.3 var(--serif);color:#fff}
+.band blockquote span{color:var(--gold-light)}
+.band__stats{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.stat{padding:24px;border-left:1px solid var(--gold)}
+.stat b{display:block;font:600 42px/1 var(--serif);color:var(--gold-light);font-variant-numeric:tabular-nums}
+.stat > span{display:block;margin-top:10px;color:var(--muted);font-size:14.5px}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;counter-reset:s}
+.step{padding:32px;border-radius:var(--r);background:#fff;border:1px solid #e4e0d6}
+.step i{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--ink);color:var(--gold-light);font:600 16px var(--serif);font-style:normal}
+.step h3{margin-top:20px;font-size:19px}
+.step p{margin-top:8px;color:var(--muted-dark)}
+.steps__line{height:2px;background:linear-gradient(90deg,var(--gold),transparent);margin:-6px 0 36px;transform-origin:left;transform:scaleX(0);transition:transform 1200ms var(--ease-in-out)}
+.steps__line.in{transform:scaleX(1)}
+
+/* pricing */
+.plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:stretch}
+.plan{position:relative;display:flex;flex-direction:column;gap:18px;padding:32px;border-radius:var(--r);background:var(--ink-card);border:1px solid var(--line);
+  transition:transform 220ms var(--ease-out),border-color 220ms ease}
+@media (hover:hover) and (pointer:fine){.plan:hover{transform:translateY(-4px);border-color:rgba(217,184,111,.5)}}
+.plan--top{background:linear-gradient(180deg,#26323d,#1d2731);border-color:rgba(217,184,111,.7)}
+.plan--top::before{content:"Most chosen";position:absolute;top:-13px;left:32px;padding:5px 12px;border-radius:999px;background:var(--gold);color:var(--ink);font:600 12px/1 var(--sans)}
+.plan h3{font:600 15px var(--sans);color:#fff}
+.plan .amt{font:600 44px/1 var(--serif);color:var(--gold-light)}
+.plan .amt small{font:400 15px var(--sans);color:var(--muted)}
+.plan ul{list-style:none;margin:0;padding:0;display:grid;gap:10px;flex:1}
+.plan li{display:flex;gap:10px;font-size:15px}
+.plan li::before{content:"";flex:none;width:16px;height:16px;margin-top:4px;border-radius:50%;background:var(--gold) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.5 8.2l2.2 2.2 4.8-4.8' fill='none' stroke='%23111a22' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat}
+.note{margin-top:28px;color:var(--muted);font-size:15px}
+.note b{color:var(--gold-light);font-weight:600}
+
+/* guarantees */
+.guar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.g{padding:32px;border-radius:var(--r);background:#fff;border:1px solid #e4e0d6;display:grid;gap:12px;align-content:start}
+.g .ic{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:var(--gold-light)}
+.g .ic svg{width:24px;height:24px}
+.g h3{font-size:19px}
+.g p{color:var(--muted-dark)}
+.g small{color:#6d7377;font-size:13.5px}
+
+/* tools */
+.tools{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.tool{display:flex;justify-content:space-between;align-items:center;gap:24px;padding:32px;border-radius:var(--r);background:var(--ink-card);text-decoration:none;border:1px solid var(--line);transition:transform 220ms var(--ease-out),border-color 220ms ease}
+.tool h3{font-size:20px;color:#fff}.tool p{margin-top:6px;color:var(--muted)}
+.tool .arrow{flex:none;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(217,184,111,.5);color:var(--gold-light);transition:transform 220ms var(--ease-out),background-color 200ms ease,color 200ms ease}
+@media (hover:hover) and (pointer:fine){.tool:hover{transform:translateY(-3px);border-color:rgba(217,184,111,.5)}.tool:hover .arrow{background:var(--gold);color:var(--ink);transform:rotate(-45deg)}}
+
+/* contact */
+.contact{display:grid;grid-template-columns:1fr 1fr;border-radius:24px;overflow:hidden;background:var(--ink-soft);border:1px solid var(--line)}
+.contact__img{min-height:100%;object-fit:cover}
+.contact form{padding:48px;display:grid;gap:18px}
+.contact h2{font-size:34px;line-height:1.15;color:#fff}
+.contact .sub{color:var(--muted)}
+label{display:grid;gap:8px;font-size:14px;color:var(--text)}
+input,textarea{font:16px var(--sans);color:#fff;background:var(--ink);border:1px solid rgba(239,211,151,.2);border-radius:12px;padding:14px 16px;transition:border-color 160ms ease,box-shadow 160ms ease}
+input:focus,textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(217,184,111,.18)}
+.form-ok{min-height:24px;color:var(--gold-light);font-size:14px;opacity:0;transform:translateY(4px);transition:opacity 200ms var(--ease-out),transform 200ms var(--ease-out)}
+.form-ok.show{opacity:1;transform:none}
+
+/* footer */
+footer{padding:72px 0 40px;border-top:1px solid var(--line)}
+.foot{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:40px}
+.foot h4{margin:0 0 14px;font:600 12px var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.foot a{text-decoration:none;color:var(--text)}
+@media (hover:hover) and (pointer:fine){.foot a:hover{color:var(--gold-light)}}
+.foot .tag{margin-top:18px;font:500 22px/1.35 var(--serif);color:var(--gold-light)}
+.legal{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--muted);font-size:13.5px}
+
+/* phone bar: appears once the hero button has scrolled away */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:18;display:none;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:rgba(17,26,34,.96);border-top:1px solid var(--line);
+  transform:translateY(100%);transition:transform 250ms var(--ease-out)}
+.bar .btn{width:100%}
+.bar.show{transform:none}
+
+/* preview badge */
+.pv{position:fixed;right:16px;top:88px;z-index:30;padding:6px 12px;border-radius:999px;background:var(--gold);color:var(--ink);font:600 12px var(--sans)}
+
+@media (max-width:1023px){
+  .links,.nav .lang{display:none}.menu-btn{display:grid;place-items:center}
+  .nav .wrap>.btn{display:none}
+  .cards,.plans,.guar{grid-template-columns:1fr 1fr}
+  .band__grid,.contact{grid-template-columns:1fr}
+  .contact__img{max-height:280px;width:100%}
+}
+@media (max-width:639px){
+  section{padding:88px 0}
+  .cards,.plans,.guar,.steps,.tools{grid-template-columns:1fr}
+  .facts{grid-template-columns:1fr 1fr}
+  .hero::before{background:linear-gradient(180deg,rgba(17,26,34,.55) 0%,rgba(17,26,34,.92) 45%,rgba(17,26,34,.98) 100%)}
+  .hero__cta .btn{width:100%}
+  .contact form{padding:28px}
+  .foot{grid-template-columns:1fr 1fr}
+  .bar{display:block}
+  .pv{top:auto;bottom:88px}
+}
+</style>
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<a class="skip" href="#top">Skip to content</a>
+<span class="pv">Preview</span>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="logo.png" alt=""><span><b>METARITHMIKA</b><small>YOUR ACCOUNTING DEPARTMENT</small></span></a>
+    <nav class="links" aria-label="Main">
+      <a href="#services">Services</a><a href="#pricing">Pricing</a><a href="#guarantees">Guarantees</a><a href="#tools">Free tools</a><a href="#blog-link">Blog</a>
+      <span class="lang"><b>EN</b> | ES</span>
+    </nav>
+    <a class="btn btn--gold" href="#contact">Book a free clarity call<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7h9M7.5 3.5 11 7l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="sheet" aria-label="Menu"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+  </div>
+</header>
+<div class="sheet" id="sheet">
+  <a href="#services">Services</a><a href="#pricing">Pricing</a><a href="#guarantees">Guarantees</a><a href="#tools">Free tools</a><a href="#blog-link">Blog</a><a href="#top">Español</a>
+  <a class="btn btn--gold" href="#contact">Book a free clarity call</a>
+</div>
+
+<main id="top">
+  <section class="hero" aria-labelledby="h1">
+    <img class="hero__img" src="hero.webp" alt="An accountant reviewing figures with a calculator at a bright desk">
+    <div class="wrap">
+      <div class="hero__copy">
+        <p class="label" data-enter style="--d:0ms">Virtual accounting · Ottawa</p>
+        <h1 id="h1" data-enter style="--d:80ms">Your accounting department in Ottawa, <em>without the in-house salary.</em></h1>
+        <p class="hero__lead" data-enter style="--d:160ms">Bookkeeping, payroll, GST/HST filing and CFO support for small businesses and non-profits across Ontario. Plans start at $250 a month.</p>
+        <div class="hero__cta" data-enter style="--d:230ms">
+          <a class="btn btn--gold" href="#contact" id="hero-cta">Book a free clarity call<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7h9M7.5 3.5 11 7l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a class="btn btn--line" href="#pricing">See plans and prices</a>
+        </div>
+      </div>
+      <div class="facts" data-enter style="--d:320ms">
+        <div class="fact"><b><span data-count="250" data-prefix="$">$250</span></b><span>a month, from</span></div>
+        <div class="fact"><b><span data-count="15">15</span>+</b><span>years of experience</span></div>
+        <div class="fact"><b>1 day</b><span>reply time, business days</span></div>
+        <div class="fact"><b>EN · ES · GR</b><span>service in three languages</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" aria-labelledby="s-h">
+    <div class="wrap">
+      <div class="head" data-reveal>
+        <p class="label">Services</p>
+        <h2 id="s-h">One team for your books, payroll and planning</h2>
+        <p>Hand us one job or the whole back office. The same people know your numbers month after month.</p>
+      </div>
+      <div class="cards">
+        <a class="card" href="#contact" data-reveal style="--d:0ms"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h2M12 11h2M16 11h0M8 15h2M12 15h2M8 18h8"/></svg><h3>Accounting and bookkeeping</h3><p>Monthly reconciliations, GST/HST returns and clear monthly statements.</p><span class="price">From $250 a month</span><span class="go">Ask about bookkeeping<svg viewBox="0 0 14 14"><path d="M2 7h9M7.5 3.5 11 7l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span></a>
+        <a class="card" href="#contact" data-reveal style="--d:60ms"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="8" r="3"/><path d="M3 19c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M16 5.5a3 3 0 010 5M18 13.5c1.8.8 3 2.6 3 4.5"/></svg><h3>Payroll</h3><p>Pay runs, CRA remittances, T4 slips, ROEs and Ontario EHT filings.</p><span class="price">Included in Premium</span><span class="go">Ask about payroll<svg viewBox="0 0 14 14"><path d="M2 7h9M7.5 3.5 11 7l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span></a>
+        <a class="card" href="#contact" data-reveal style="--d:110ms"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h5"/></svg><h3>Bills, invoices and admin</h3><p>Vendor bills paid on time, client invoices followed up, back office handled.</p><span class="price">Included in Premium</span><span class="go">Ask about admin support<svg viewBox="0 0 14 14"><path d="M2 7h9M7.5 3.5 11 7l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span></a>
+        <a class="card" href="#contact" data-reveal style="--d:150ms"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12a8 8 0 0114-5.3L20 9"/><path d="M20 4v5h-5M20 12a8 8 0 01-14 5.3L4 15"/><path d="M4 20v-5h5"/></svg><h3>Clean-up and catch-up</h3><p>Months or years of books rebuilt and reconciled, ready for the CRA or a lender.</p><span class="price">Quoted after a free review</span><span class="go">Get a catch-up quote<svg viewBox="0 0 14 14"><path d="M2 7h9M7.5 3.5 11 7l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span></a>
+        <a class="card" href="#contact" data-reveal style="--d:190ms"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20V10M10 20V6M16 20v-8M22 20H2"/><path d="M4 7l6-4 6 5 5-3"/></svg><h3>Fractional CFO</h3><p>13-week and 12-month cash forecasts, budgets and board-ready reports.</p><span class="price">Part of a Custom plan</span><span class="go">Ask about CFO support<svg viewBox="0 0 14 14"><path d="M2 7h9M7.5 3.5 11 7l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span></a>
+        <a class="card" href="#contact" data-reveal style="--d:220ms"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-4.4-7-10a4 4 0 017-2.6A4 4 0 0119 11c0 5.6-7 10-7 10z"/></svg><h3>Non-profit accounting</h3><p>Grant tracking against your funder's budget, board reports and T3010-ready records.</p><span class="price">20% off your first 3 months</span><span class="go">Ask about non-profits<svg viewBox="0 0 14 14"><path d="M2 7h9M7.5 3.5 11 7l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span></a>
+      </div>
+    </div>
+  </section>
+
+  <div class="band">
+    <div class="wrap band__grid">
+      <blockquote data-reveal>A dedicated virtual team keeps your books current, so you always know where you stand and <span>tax time is never a scramble.</span></blockquote>
+      <div class="band__stats">
+        <div class="stat" data-reveal style="--d:0ms"><b><span data-count="15">15</span>+</b><span>years of experience on the team</span></div>
+        <div class="stat" data-reveal style="--d:60ms"><b><span data-count="1">1</span> day</b><span>to reply to every message, on business days</span></div>
+        <div class="stat" data-reveal style="--d:110ms"><b><span data-count="3">3</span></b><span>languages: English, Spanish and Greek</span></div>
+        <div class="stat" data-reveal style="--d:150ms"><b>2–4 wk</b><span>to be fully set up</span></div>
+      </div>
+    </div>
+  </div>
+
+  <section class="light" aria-labelledby="st-h">
+    <div class="wrap">
+      <div class="head" data-reveal>
+        <p class="label">Getting started</p>
+        <h2 id="st-h">From first call to monthly statements in 3 steps</h2>
+      </div>
+      <div class="steps__line" data-line></div>
+      <div class="steps">
+        <div class="step" data-reveal style="--d:0ms"><i>1</i><h3>Talk through your books</h3><p>A free 20-minute call about your bookkeeping, payroll and filings, then a clear written proposal.</p></div>
+        <div class="step" data-reveal style="--d:80ms"><i>2</i><h3>Send your records securely</h3><p>Upload statements and receipts by encrypted file share. We set up QuickBooks Online or Sage 50.</p></div>
+        <div class="step" data-reveal style="--d:150ms"><i>3</i><h3>Get statements every month</h3><p>We reconcile, send your statements and remind you before every CRA deadline.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing" aria-labelledby="p-h">
+    <div class="wrap">
+      <div class="head" data-reveal>
+        <p class="label">Pricing</p>
+        <h2 id="p-h">Plans and prices</h2>
+        <p>Start with what you need now and change your plan as you grow. No long-term contracts.</p>
+      </div>
+      <div class="plans">
+        <div class="plan" data-reveal style="--d:0ms"><h3>Standard</h3><p class="amt">$250 <small>/ month, from</small></p><ul><li>An assigned bookkeeper</li><li>Up to 20 transactions a month</li><li>Monthly reconciliation and sales tax filing</li><li>Quarterly financial statements</li></ul><a class="btn btn--line" href="#contact">Ask about Standard</a></div>
+        <div class="plan plan--top" data-reveal style="--d:70ms"><h3>Premium</h3><p class="amt">$750 <small>/ month, from</small></p><ul><li>An accounting team and weekly meetings</li><li>Monthly statements and sales tax filing</li><li>Payables and receivables handled</li><li>Payroll for 2 employees</li></ul><a class="btn btn--gold" href="#contact">Ask about Premium</a></div>
+        <div class="plan" data-reveal style="--d:130ms"><h3>Custom</h3><p class="amt">Quote <small>after your call</small></p><ul><li>Built on your transaction and staff volume</li><li>Reporting and filing on your schedule</li><li>CFO budgets, forecasts and cash flow reports</li></ul><a class="btn btn--line" href="#contact">Request a custom quote</a></div>
+      </div>
+      <p class="note" data-reveal><b>Non-profits:</b> 20% off your first 3 months.</p>
+    </div>
+  </section>
+
+  <section class="light" id="guarantees" aria-labelledby="g-h">
+    <div class="wrap">
+      <div class="head" data-reveal>
+        <p class="label">Our three guarantees</p>
+        <h2 id="g-h">Guarantees, with the terms in plain words</h2>
+      </div>
+      <div class="guar">
+        <div class="g" data-reveal style="--d:0ms"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v6c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span><h3>Accuracy assurance</h3><p>If we make an error, we correct it at no cost to you.</p><small>Report it within 30 days of the report or filing. Government penalties are not covered.</small></div>
+        <div class="g" data-reveal style="--d:70ms"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 7h11M4 7l3-3M4 7l3 3M20 17H9M20 17l-3-3M20 17l-3 3"/></svg></span><h3>Flexible engagement</h3><p>No long-term contracts. Change or cancel your plan at any time.</p><small>Give written notice 10 days before your next billing date.</small></div>
+        <div class="g" data-reveal style="--d:130ms"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M8.5 14.5c1 1.2 2.2 1.8 3.5 1.8s2.5-.6 3.5-1.8M9 9.5h.01M15 9.5h.01"/></svg></span><h3>Satisfaction guarantee</h3><p>Not satisfied in your first 30 days? We fix it, or refund your first month's fee.</p><small>For new clients; covers the first month's plan fee.</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tools" aria-labelledby="t-h">
+    <div class="wrap">
+      <div class="head" data-reveal>
+        <p class="label">Free Metarithmika tools</p>
+        <h2 id="t-h">Free tools for Ontario deadlines</h2>
+        <p>Built for our clients, open to anyone. No sign-up needed.</p>
+      </div>
+      <div class="tools">
+        <a class="tool" href="https://deadline-tracker.metarithmika.ca" data-reveal style="--d:0ms"><div><h3>Deadline tracker</h3><p>GST/HST, payroll remittance and filing dates in one list.</p></div><span class="arrow"><svg width="18" height="18" viewBox="0 0 14 14"><path d="M2 7h9M7.5 3.5 11 7l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></a>
+        <a class="tool" href="https://year-end-checklist.metarithmika.ca" data-reveal style="--d:70ms"><div><h3>Year-end checklist</h3><p>What to gather before your accountant closes the year.</p></div><span class="arrow"><svg width="18" height="18" viewBox="0 0 14 14"><path d="M2 7h9M7.5 3.5 11 7l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" style="padding-top:0" aria-labelledby="c-h">
+    <div class="wrap">
+      <div class="contact" data-reveal>
+        <img class="contact__img" src="desk.webp" alt="A Metarithmika mug beside a laptop, a pen and printed reports">
+        <form id="form" novalidate>
+          <p class="label">Free 20-minute clarity call</p>
+          <h2 id="c-h">Let's build your financial clarity</h2>
+          <p class="sub">Tell us about your business and we suggest a plan. We reply within one business day, in English, Spanish or Greek.</p>
+          <label>Your name<input name="name" autocomplete="name"></label>
+          <label>Email<input name="email" type="email" autocomplete="email"></label>
+          <label>What you need help with<textarea name="msg" rows="3"></textarea></label>
+          <button class="btn btn--gold" type="submit">Book a free clarity call<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7h9M7.5 3.5 11 7l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <p class="form-ok" role="status" id="ok"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div><a class="brand" href="#top"><img src="logo.png" alt=""><span><b>METARITHMIKA</b><small>YOUR ACCOUNTING DEPARTMENT</small></span></a><p class="tag">Your finances, simplified.<br>Your success, amplified.</p></div>
+      <div><h4>Company</h4><ul><li><a href="#services">Services</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#blog-link" id="blog-link">Blog</a></li></ul></div>
+      <div><h4>Clients</h4><ul><li><a href="#guarantees">Client guarantee</a></li><li><a href="#tools">Free tools</a></li><li><a href="#contact">Clarity call</a></li></ul></div>
+      <div><h4>Contact</h4><ul><li><a href="mailto:info@metarithmika.ca">info@metarithmika.ca</a></li><li><a href="tel:+16137069580">(613) 706-9580</a></li><li>2148 Carling Ave., Ottawa</li></ul></div>
+    </div>
+    <div class="legal"><span>© 2026 Metarithmika. All rights reserved.</span><span>Privacy · Terms · Cookie settings</span></div>
+  </div>
+</footer>
+
+<div class="bar" id="bar"><a class="btn btn--gold" href="#contact">Book a free clarity call</a></div>
+
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // hero entrance once on load
+  requestAnimationFrame(() => requestAnimationFrame(() => document.querySelector('.hero').classList.add('ready')));
+
+  // count-up, once, ease-out
+  const ease = t => 1 - Math.pow(1 - t, 3);
+  const count = el => {
+    const to = +el.dataset.count, pre = el.dataset.prefix || '';
+    if (reduce) { el.textContent = pre + to; return; }
+    const t0 = performance.now(), dur = 1100;
+    const step = now => { const p = Math.min(1, (now - t0) / dur); el.textContent = pre + Math.round(to * ease(p)); if (p < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  };
+
+  // reveal once on scroll
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add('in');
+    e.target.querySelectorAll('[data-count]').forEach(count);
+    io.unobserve(e.target);
+  }), { rootMargin: '0px 0px -12% 0px' });
+  document.querySelectorAll('[data-reveal],[data-line]').forEach(el => io.observe(el));
+  // hero figures count when the hero enters
+  setTimeout(() => document.querySelectorAll('.facts [data-count]').forEach(count), 350);
+
+  // phone menu
+  const btn = document.querySelector('.menu-btn'), sheet = document.getElementById('sheet');
+  btn.addEventListener('click', () => { const o = sheet.classList.toggle('open'); btn.setAttribute('aria-expanded', o); });
+  sheet.addEventListener('click', e => { if (e.target.closest('a')) { sheet.classList.remove('open'); btn.setAttribute('aria-expanded', false); } });
+  addEventListener('keydown', e => { if (e.key === 'Escape') { sheet.classList.remove('open'); btn.setAttribute('aria-expanded', false); } });
+
+  // phone bar once the hero button is off screen
+  const bar = document.getElementById('bar');
+  new IntersectionObserver(([e]) => bar.classList.toggle('show', !e.isIntersecting)).observe(document.getElementById('hero-cta'));
+
+  // preview form: no real send
+  document.getElementById('form').addEventListener('submit', e => {
+    e.preventDefault();
+    const ok = document.getElementById('ok');
+    ok.textContent = 'Preview only: in the live site this sends your request to info@metarithmika.ca.';
+    ok.classList.add('show');
+  });
+})();
+</script>
+</body>
+</html>
