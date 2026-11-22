@@ -9,7 +9,7 @@ Reference: the attached file `metarithmika-animated-preview.html` shows the exac
 ## 1. Layout changes
 
 1. **Phone hero (under 640px wide):** the hero photo of the accountant is a full-bleed background behind the hero text, not hidden or cropped away. Put a dark gradient over it, light at the top and almost solid navy at the bottom (`linear-gradient(180deg, rgba(17,26,34,.55) 0%, rgba(17,26,34,.92) 45%, rgba(17,26,34,.98) 100%)`), so she stays visible behind the headline and the text stays readable. Keep her face in frame with `object-position: 70% 40%`. On desktop keep the current split: text on the left, photo on the right.
-2. **Facts row under the hero buttons**, on every screen size: `$250` "a month, from" · `15+` "years of experience" · `1 day` "reply time, business days" · `EN · ES · GR` "service in three languages". Numbers in the gold serif, labels small and grey, a thin gold line above the row. Four columns on desktop, two on phones.
+2. **Facts row under the hero buttons**, on every screen size: **From $250/month** "plans for small businesses" · `15+` "years of experience" · `1 day` "reply time, business days" · `EN · ES · GR` "service in three languages". Numbers in the gold serif, labels small and grey, a thin gold line above the row. Four columns on desktop, two on phones.
 
 ## 2. Motion rules (use these exact values)
 
@@ -30,7 +30,7 @@ Reference: the attached file `metarithmika-animated-preview.html` shows the exac
 | Element | Motion |
 |---|---|
 | Hero, on page load | The small label, the headline, the paragraph, the buttons and the facts row fade up one after another: from `opacity: 0; transform: translateY(14px); filter: blur(4px)` to normal, 700ms `var(--ease-out)`, delays 0, 80, 160, 230, 320ms. The hero photo settles from `scale(1.06)` to `scale(1)` over 1600ms `var(--ease-out)`. |
-| Numbers $250 and 15+ | Count up from 0 when they appear, 1100ms, ease-out (cubic). |
+| Prices and figures | "From $250/month" in the hero, "From $250/month" and "From $750/month" on the plan cards, and "15+" all count up from 0 when they appear, 1100ms, ease-out (cubic). **Only the digits count:** write the dollar sign and "/month" as plain text outside the counting number, so the dollar sign shows once and never doubles (`From $<span data-count="250">250</span>/month`). |
 | Section headings and intros | Rise into place as they enter the screen: from `opacity: 0; translateY(24px)`, 700ms `var(--ease-out)`. Trigger when 12% inside the screen. |
 | Card groups (services, plans, guarantees, steps, tools, blog posts) | Same rise, one card after another: delays 0, 60, 110, 150, 190, 220ms. |
 | Onboarding steps | A thin gold line above the steps draws from left to right (`transform: scaleX(0)` to `scaleX(1)`, origin left, 1200ms `var(--ease-in-out)`) when the section appears. |
@@ -45,7 +45,7 @@ Reference: the attached file `metarithmika-animated-preview.html` shows the exac
 
 ## 4. Code you can reuse
 
-Add `data-reveal` to any heading block or card that should rise in, and an inline `style="--d:60ms"` for its delay in a group. Add `data-count="250" data-prefix="$"` to a number that should count up.
+Add `data-reveal` to any heading block or card that should rise in, and an inline `style="--d:60ms"` for its delay in a group. Wrap only the digits of a number that should count up: `From $<span data-count="250">250</span>/month`. Never add the dollar sign inside the counter as well, or it shows twice ($$250).
 
 ```css
 @media (prefers-reduced-motion: no-preference) {
@@ -69,11 +69,11 @@ document.documentElement.classList.add('js');
 addEventListener('DOMContentLoaded', () => {
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const count = el => {
-    const to = +el.dataset.count, pre = el.dataset.prefix || '';
-    if (reduce) { el.textContent = pre + to; return; }
+    const to = +el.dataset.count;
+    if (reduce) { el.textContent = to; return; }
     const t0 = performance.now();
     const step = now => { const p = Math.min(1, (now - t0) / 1100);
-      el.textContent = pre + Math.round(to * (1 - Math.pow(1 - p, 3)));
+      el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3)));
       if (p < 1) requestAnimationFrame(step); };
     requestAnimationFrame(step);
   };
@@ -93,4 +93,5 @@ addEventListener('DOMContentLoaded', () => {
 - Load the home page on a phone: the accountant is visible behind the hero text and the text reads clearly.
 - Scroll every page top to bottom: each section rises in once, nothing flickers, nothing stays invisible.
 - Turn on "reduce motion" in the phone or computer settings: everything is visible and still.
+- The hero and plan prices read "From $250/month" and "From $750/month" with one dollar sign, during and after the count.
 - Every button still goes where it goes today; every expandable panel still opens and closes.

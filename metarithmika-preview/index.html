@@ -73,6 +73,8 @@ p{margin:0}
 .hero__cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
 .facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:56px;padding-top:28px;border-top:1px solid var(--line);max-width:860px}
 .fact b{display:block;font:600 clamp(24px,2.4vw,32px)/1.1 var(--serif);color:var(--gold-light);font-variant-numeric:tabular-nums}
+.fact b small,.plan .amt small{font:500 15px var(--sans);color:var(--muted);letter-spacing:0}
+.fact b small:first-child,.plan .amt small:first-child{margin-right:4px}
 .fact > span{display:block;margin-top:6px;font-size:14px;color:var(--muted)}
 
 /* hero entrance: once on load, staggered, ease-out; photo settles from a slight zoom */
@@ -248,14 +250,14 @@ footer{padding:72px 0 40px;border-top:1px solid var(--line)}
       <div class="hero__copy">
         <p class="label" data-enter style="--d:0ms">Virtual accounting · Ottawa</p>
         <h1 id="h1" data-enter style="--d:80ms">Your accounting department in Ottawa, <em>without the in-house salary.</em></h1>
-        <p class="hero__lead" data-enter style="--d:160ms">Bookkeeping, payroll, GST/HST filing and CFO support for small businesses and non-profits across Ontario. Plans start at $250 a month.</p>
+        <p class="hero__lead" data-enter style="--d:160ms">Bookkeeping, payroll, GST/HST filing and CFO support for small businesses and non-profits across Ontario. Plans from $250/month.</p>
         <div class="hero__cta" data-enter style="--d:230ms">
           <a class="btn btn--gold" href="#contact" id="hero-cta">Book a free clarity call<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7h9M7.5 3.5 11 7l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           <a class="btn btn--line" href="#pricing">See plans and prices</a>
         </div>
       </div>
       <div class="facts" data-enter style="--d:320ms">
-        <div class="fact"><b><span data-count="250" data-prefix="$">$250</span></b><span>a month, from</span></div>
+        <div class="fact"><b><small>From</small> $<span data-count="250">250</span><small>/month</small></b><span>plans for small businesses</span></div>
         <div class="fact"><b><span data-count="15">15</span>+</b><span>years of experience</span></div>
         <div class="fact"><b>1 day</b><span>reply time, business days</span></div>
         <div class="fact"><b>EN · ES · GR</b><span>service in three languages</span></div>
@@ -271,7 +273,7 @@ footer{padding:72px 0 40px;border-top:1px solid var(--line)}
         <p>Hand us one job or the whole back office. The same people know your numbers month after month.</p>
       </div>
       <div class="cards">
-        <a class="card" href="#contact" data-reveal style="--d:0ms"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h2M12 11h2M16 11h0M8 15h2M12 15h2M8 18h8"/></svg><h3>Accounting and bookkeeping</h3><p>Monthly reconciliations, GST/HST returns and clear monthly statements.</p><span class="price">From $250 a month</span><span class="go">Ask about bookkeeping<svg viewBox="0 0 14 14"><path d="M2 7h9M7.5 3.5 11 7l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span></a>
+        <a class="card" href="#contact" data-reveal style="--d:0ms"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h2M12 11h2M16 11h0M8 15h2M12 15h2M8 18h8"/></svg><h3>Accounting and bookkeeping</h3><p>Monthly reconciliations, GST/HST returns and clear monthly statements.</p><span class="price">From $250/month</span><span class="go">Ask about bookkeeping<svg viewBox="0 0 14 14"><path d="M2 7h9M7.5 3.5 11 7l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span></a>
         <a class="card" href="#contact" data-reveal style="--d:60ms"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="8" r="3"/><path d="M3 19c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M16 5.5a3 3 0 010 5M18 13.5c1.8.8 3 2.6 3 4.5"/></svg><h3>Payroll</h3><p>Pay runs, CRA remittances, T4 slips, ROEs and Ontario EHT filings.</p><span class="price">Included in Premium</span><span class="go">Ask about payroll<svg viewBox="0 0 14 14"><path d="M2 7h9M7.5 3.5 11 7l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span></a>
         <a class="card" href="#contact" data-reveal style="--d:110ms"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h5"/></svg><h3>Bills, invoices and admin</h3><p>Vendor bills paid on time, client invoices followed up, back office handled.</p><span class="price">Included in Premium</span><span class="go">Ask about admin support<svg viewBox="0 0 14 14"><path d="M2 7h9M7.5 3.5 11 7l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span></a>
         <a class="card" href="#contact" data-reveal style="--d:150ms"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12a8 8 0 0114-5.3L20 9"/><path d="M20 4v5h-5M20 12a8 8 0 01-14 5.3L4 15"/><path d="M4 20v-5h5"/></svg><h3>Clean-up and catch-up</h3><p>Months or years of books rebuilt and reconciled, ready for the CRA or a lender.</p><span class="price">Quoted after a free review</span><span class="go">Get a catch-up quote<svg viewBox="0 0 14 14"><path d="M2 7h9M7.5 3.5 11 7l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span></a>
@@ -316,8 +318,8 @@ footer{padding:72px 0 40px;border-top:1px solid var(--line)}
         <p>Start with what you need now and change your plan as you grow. No long-term contracts.</p>
       </div>
       <div class="plans">
-        <div class="plan" data-reveal style="--d:0ms"><h3>Standard</h3><p class="amt">$250 <small>/ month, from</small></p><ul><li>An assigned bookkeeper</li><li>Up to 20 transactions a month</li><li>Monthly reconciliation and sales tax filing</li><li>Quarterly financial statements</li></ul><a class="btn btn--line" href="#contact">Ask about Standard</a></div>
-        <div class="plan plan--top" data-reveal style="--d:70ms"><h3>Premium</h3><p class="amt">$750 <small>/ month, from</small></p><ul><li>An accounting team and weekly meetings</li><li>Monthly statements and sales tax filing</li><li>Payables and receivables handled</li><li>Payroll for 2 employees</li></ul><a class="btn btn--gold" href="#contact">Ask about Premium</a></div>
+        <div class="plan" data-reveal style="--d:0ms"><h3>Standard</h3><p class="amt"><small>From</small> $<span data-count="250">250</span><small>/month</small></p><ul><li>An assigned bookkeeper</li><li>Up to 20 transactions a month</li><li>Monthly reconciliation and sales tax filing</li><li>Quarterly financial statements</li></ul><a class="btn btn--line" href="#contact">Ask about Standard</a></div>
+        <div class="plan plan--top" data-reveal style="--d:70ms"><h3>Premium</h3><p class="amt"><small>From</small> $<span data-count="750">750</span><small>/month</small></p><ul><li>An accounting team and weekly meetings</li><li>Monthly statements and sales tax filing</li><li>Payables and receivables handled</li><li>Payroll for 2 employees</li></ul><a class="btn btn--gold" href="#contact">Ask about Premium</a></div>
         <div class="plan" data-reveal style="--d:130ms"><h3>Custom</h3><p class="amt">Quote <small>after your call</small></p><ul><li>Built on your transaction and staff volume</li><li>Reporting and filing on your schedule</li><li>CFO budgets, forecasts and cash flow reports</li></ul><a class="btn btn--line" href="#contact">Request a custom quote</a></div>
       </div>
       <p class="note" data-reveal><b>Non-profits:</b> 20% off your first 3 months.</p>
